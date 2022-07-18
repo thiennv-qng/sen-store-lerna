@@ -1,5 +1,5 @@
 {
-  "name": "store",
+  "name": "sen-store",
   "version": "0.0.1",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
@@ -14,6 +14,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^5.0.1",
+    "remarkable": "^2.0.1",
     "swr": "^1.3.0",
     "web-vitals": "^2.1.1"
   },
@@ -53,11 +54,13 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.2.1",
     "@types/bn.js": "^5.1.0",
+    "@types/bs58": "^4.0.1",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.3",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.1",
+    "@types/remarkable": "^2.0.3",
     "dotenv-cra": "^3.0.2",
     "env-cmd": "^10.1.0",
     "gh-pages": "^3.2.3",

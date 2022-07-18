@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "prestart:module": "yarn build && lerna bootstrap",
-    "start:module": "lerna run --scope store --stream start",
+    "start:module": "lerna run --scope sen-store --stream start",
     "prestart:embeded": "yarn build && lerna bootstrap",
     "start:embeded": "lerna run --scope embeded-template --stream start",
     "prebuild": "lerna bootstrap --no-private",

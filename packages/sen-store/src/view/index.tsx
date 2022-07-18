@@ -2,6 +2,7 @@ import { Col, Row } from 'antd'
 import BannerHeader from './banner/header'
 import BrowseApps from './browseApps'
 import HotDApps from './hotDApps'
+import Market from './market'
 import MostPopular from './mostPopular'
 import NewBuilderApps from './newBuilderApps'
 import PopularTwitter from './popularTwitter'
@@ -10,6 +11,9 @@ import Trending from './trending'
 const View = () => {
   return (
     <Row gutter={[24, 24]}>
+      <Col span={24}>
+        <Market />
+      </Col>
       <Col span={24}>
         <BannerHeader />
       </Col>
