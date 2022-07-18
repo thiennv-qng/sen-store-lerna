@@ -3,10 +3,7 @@
   "version": "3.0.45",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
+  "private": true,
   "dependencies": {
     "@dnd-kit/core": "^4.0.1",
     "@dnd-kit/sortable": "^5.0.0",
