@@ -25,7 +25,7 @@ const Markdown = ({ src }: { src: string }) => {
   }, [fetchData])
 
   return (
-    <Row gutter={[16, 16]}>
+    <Row gutter={[16, 16]} className="readme-loader">
       <Col span={24} ref={ref} />
     </Row>
   )

@@ -31,7 +31,7 @@ export const useGoToStoreCallback = () => {
       const nav = blank
         ? (url: string) => window.open(url, '_blank')
         : history.push
-      let url = appId ? `/store/${appId}` : '/store'
+      let url = appId ? `/app/store/${appId}` : '/app/store'
       url = search ? url + search : url
       return nav(url)
     },
