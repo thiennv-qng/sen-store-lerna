@@ -1,13 +1,5 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import {
-  RootDispatch,
-  RootState,
-  useRootDispatch,
-  useRootSelector,
-  useWallet,
-} from '@sentre/senhub'
-import { account } from '@senswap/sen-js'
 
 import { Row, Col } from 'antd'
 import TopBanner from './topBanner'
@@ -18,16 +10,14 @@ import AllApps from './allApps'
 
 import { loadPage, loadRegister } from '@sentre/senhub/dist/store/page.reducer'
 import { compareAliasString } from './appCategory/hooks/custom'
+import { AppState } from 'model'
+import { useSelector } from 'react-redux'
 
 const CATEGORIES = ['utility', 'DAO', 'liquidity', 'sentre', 'game']
 
 const Market = () => {
   const { search } = useLocation()
-  const register = useRootSelector((state: RootState) => state.page.register)
-  const {
-    wallet: { address: walletAddress },
-  } = useWallet()
-  const dispatch = useRootDispatch<RootDispatch>()
+  const register = useSelector((state: AppState) => state.page.register)
 
   const category = useMemo(
     () => new URLSearchParams(search).get('category'),
@@ -43,19 +33,6 @@ const Market = () => {
     }
     return CATEGORIES.filter((category) => compareAliasString(category, tags))
   }, [register])
-
-  // Load DApp flags, registry, page
-  useEffect(() => {
-    ;(async () => {
-      if (!account.isAddress(walletAddress)) return dispatch(loadRegister())
-      try {
-        const register = await dispatch(loadRegister()).unwrap()
-        if (Object.keys(register).length) await dispatch(loadPage())
-      } catch (er: any) {
-        return window.notify({ type: 'warning', description: er.message })
-      }
-    })()
-  }, [dispatch, walletAddress])
 
   if (category) return <AppCategorySeeAll category={category} />
   return (
