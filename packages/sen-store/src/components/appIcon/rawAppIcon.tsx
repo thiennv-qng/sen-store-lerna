@@ -1,12 +1,11 @@
 import { MouseEvent, ReactNode, useMemo } from 'react'
+import { RootState, useRootSelector } from '@sentre/senhub'
 
 import { Space, Avatar, Typography, Badge, AvatarProps } from 'antd'
 import IonIcon from '@sentre/antd-ionicon'
 
-import { AppState } from 'model'
 import configs from 'configs'
 import './index.less'
-import { useSelector } from 'react-redux'
 
 const {
   register: { devAppId },
@@ -48,7 +47,7 @@ export const RawVerticalAppIcon = ({
   size = 64,
   name = true,
 }: RawAppIconProps) => {
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const { name: appName } = useMemo(
     () => register[appId] || { name: 'Unknown' },
     [register, appId],
@@ -89,7 +88,7 @@ export const RawHorizontalAppIcon = ({
   size = 32,
   name = true,
 }: RawAppIconProps) => {
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const { name: appName } = useMemo(
     () => register[appId] || { name: 'Unknown' },
     [register, appId],

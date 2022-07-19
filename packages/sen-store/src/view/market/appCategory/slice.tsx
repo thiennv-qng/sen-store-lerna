@@ -5,7 +5,7 @@ import { SwiperOs } from 'components/swiperOS'
 import { SwiperSlide } from 'swiper/react'
 
 import { CategoryOptions, useAppCategory } from './hooks'
-import { useGoToStore } from 'hooks/useGotoStore'
+import { useGoToStore } from '@sentre/senhub'
 
 export type AppCategorySliceProps = {
   seeAll?: boolean

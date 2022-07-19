@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
-
+import { RootState, useRootSelector } from '@sentre/senhub'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 
@@ -10,15 +9,14 @@ import storePanel1 from 'static/images/market/store-panel1.png'
 import storePanel2 from 'static/images/market/store-panel2.png'
 import storePanel3 from 'static/images/market/store-panel3.png'
 import storePanel4 from 'static/images/market/store-panel4.png'
-import './index.os.less'
-import { AppState } from 'model'
+import './index.less'
 
 const PAGE_PADDING = 20
 const PANELS = [storePanel1, storePanel2, storePanel3, storePanel4]
 
 const TopBanner = () => {
-  const width = useSelector((state: AppState) => state.ui.width)
-  const infix = useSelector((state: AppState) => state.ui.infix)
+  const width = useRootSelector((state: RootState) => state.ui.width)
+  const infix = useRootSelector((state: RootState) => state.ui.infix)
 
   const isMobile = useMemo(() => infix === 'xs', [infix])
 

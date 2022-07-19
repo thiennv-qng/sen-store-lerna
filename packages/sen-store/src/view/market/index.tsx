@@ -1,6 +1,13 @@
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useWallet } from '@sentre/senhub'
+import {
+  RootDispatch,
+  RootState,
+  useRootDispatch,
+  useRootSelector,
+  useWallet,
+} from '@sentre/senhub'
+import { account } from '@senswap/sen-js'
 
 import { Row, Col } from 'antd'
 import TopBanner from './topBanner'
@@ -9,21 +16,18 @@ import AppCategorySeeAll from './appCategory/seeAll'
 import AppCategorySlice from './appCategory/slice'
 import AllApps from './allApps'
 
+import { loadPage, loadRegister } from '@sentre/senhub/dist/store/page.reducer'
 import { compareAliasString } from './appCategory/hooks/custom'
-import { AppDispatch, AppState } from 'model'
-import { useDispatch, useSelector } from 'react-redux'
-import { account } from '@senswap/sen-js'
-import { loadPage, loadRegister } from 'model/page.controller'
 
 const CATEGORIES = ['utility', 'DAO', 'liquidity', 'sentre', 'game']
 
 const Market = () => {
   const { search } = useLocation()
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const {
     wallet: { address: walletAddress },
   } = useWallet()
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useRootDispatch<RootDispatch>()
 
   const category = useMemo(
     () => new URLSearchParams(search).get('category'),

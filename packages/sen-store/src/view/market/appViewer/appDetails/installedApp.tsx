@@ -1,13 +1,14 @@
 import { Fragment, useMemo } from 'react'
+import {
+  RootState,
+  useGoToApp,
+  useInstallApp,
+  useRootSelector,
+  useUninstallApp,
+} from '@sentre/senhub'
 
 import { Button, Col, Row } from 'antd'
 import IonIcon from '@sentre/antd-ionicon'
-
-import { useGoToApp } from 'hooks/useGotoApp'
-import { useUninstallApp } from 'hooks/useUninstallApp'
-import { useInstallApp } from 'hooks/useInstallApp'
-import { useSelector } from 'react-redux'
-import { AppState } from 'model'
 
 export type InstalledAppProps = {
   installed: boolean
@@ -15,7 +16,7 @@ export type InstalledAppProps = {
 }
 
 const InstalledApp = ({ installed, appId }: InstalledAppProps) => {
-  const infix = useSelector((state: AppState) => state.ui.infix)
+  const infix = useRootSelector((state: RootState) => state.ui.infix)
   const opOpen = useGoToApp({ appId })
   const onInstall = useInstallApp(appId)
   const onUninstall = useUninstallApp(appId)

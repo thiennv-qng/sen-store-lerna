@@ -1,9 +1,10 @@
+import { useGoToStore } from '@sentre/senhub'
+
 import { Button, Col, Row, Space, Typography } from 'antd'
 import IonIcon from '@sentre/antd-ionicon'
 import AppCard from '../appCard'
 
 import { CategoryOptions, useAppCategory } from './hooks'
-import { useGoToStore } from 'hooks/useGotoStore'
 
 const CategorySeeAll = (options: CategoryOptions) => {
   const { title, appIds } = useAppCategory(options)
