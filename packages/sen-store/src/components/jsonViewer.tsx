@@ -1,14 +1,12 @@
-import { useSelector } from 'react-redux'
+import ReactJson from 'react-json-view'
+import { RootState, useRootSelector } from '@sentre/senhub'
 
 import { Card } from 'antd'
-import ReactJson from 'react-json-view'
-
-import { AppState } from 'model'
 
 export type JsonViewerProps = { value?: object }
 
 const JsonViewer = ({ value = {} }: JsonViewerProps) => {
-  const theme = useSelector((state: AppState) => state.ui.theme)
+  const theme = useRootSelector((state: RootState) => state.ui.theme)
 
   return (
     <Card bordered={false}>

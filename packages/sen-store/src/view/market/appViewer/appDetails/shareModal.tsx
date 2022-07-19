@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
+import { RootState, useRootSelector, util } from '@sentre/senhub'
 import copy from 'copy-to-clipboard'
 
 import {
@@ -14,11 +15,8 @@ import {
 } from 'antd'
 import IonIcon from '@sentre/antd-ionicon'
 
-import { util } from '@sentre/senhub'
 import Telegram from 'static/images/social/telegram.png'
 import Twitter from 'static/images/social/twitter.png'
-import { useSelector } from 'react-redux'
-import { AppState } from 'model'
 
 export type ShareModalProps = {
   appId: string
@@ -34,7 +32,7 @@ const ShareModal = ({
   onClose,
 }: ShareModalProps) => {
   const [copied, setCopied] = useState(false)
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
 
   const { name } = useMemo(
     () => register[appId] || ({} as ComponentManifest),

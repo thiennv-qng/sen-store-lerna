@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import { useWallet } from '@sentre/senhub'
+import { RootState, useRootSelector, useWallet } from '@sentre/senhub'
 import { account } from '@senswap/sen-js'
 
 import { Row, Col, Typography, Space } from 'antd'
@@ -11,12 +10,11 @@ import InstalledApp from './installedApp'
 import AppTags from './appTags'
 import AppAuthor from './appAuthor'
 import AppShare from './appShare'
-import { AppState } from 'model'
 
 const AppDetails = ({ appId }: { appId: string }) => {
-  const infix = useSelector((state: AppState) => state.ui.infix)
-  const register = useSelector((state: AppState) => state.page.register)
-  const appIds = useSelector((state: AppState) => state.page.appIds)
+  const infix = useRootSelector((state: RootState) => state.ui.infix)
+  const register = useRootSelector((state: RootState) => state.page.register)
+  const appIds = useRootSelector((state: RootState) => state.page.appIds)
   const {
     wallet: { address: walletAddress },
   } = useWallet()

@@ -1,11 +1,10 @@
 import { Suspense, forwardRef, cloneElement, useCallback, useMemo } from 'react'
 import { RemoteModule } from '@sentre/react-dynamic-remote-component'
 import useSWR from 'swr'
+import { RootState, useRootSelector } from '@sentre/senhub'
 
 import { Spin } from 'antd'
 import ErrorBoundary from 'components/errorBoundary'
-import { useSelector } from 'react-redux'
-import { AppState } from 'model'
 
 const ONE_HOUR = 60 * 60 * 1000
 
@@ -66,7 +65,7 @@ export const StaticLoader = forwardRef<
     render: (url: string) => JSX.Element
   }
 >(({ type, appId, defaultData = '', render }, ref) => {
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const url = useMemo(() => register[appId]?.url || '', [register, appId])
   const manifest: RemoteModule = useMemo(
     () => ({ url, scope: appId, module: './static' }),
@@ -115,7 +114,7 @@ export const MultiStaticLoader = forwardRef<
     render: (url: string[]) => JSX.Element
   }
 >(({ type, appId, defaultData = [''], render }, ref) => {
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const url = useMemo(() => register[appId]?.url || '', [register, appId])
   const manifest: RemoteModule = useMemo(
     () => ({ url, scope: appId, module: './static' }),
