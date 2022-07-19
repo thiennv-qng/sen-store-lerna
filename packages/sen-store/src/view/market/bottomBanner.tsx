@@ -1,11 +1,10 @@
 import { useMemo } from 'react'
+import { RootState, useRootSelector } from '@sentre/senhub'
 
 import { Card, Col, Row } from 'antd'
 
 import storePanel1 from 'static/images/market/store-bpanel1.jpeg'
 import storePanel2 from 'static/images/market/store-bpanel2.png'
-import { useSelector } from 'react-redux'
-import { AppState } from 'model'
 
 const PAGE_PADDING = 20
 const ELEMENT_PADDING = 24
@@ -24,7 +23,7 @@ const PANELS = [
 ]
 
 const BottomBanner = () => {
-  const width = useSelector((state: AppState) => state.ui.width)
+  const width = useRootSelector((state: RootState) => state.ui.width)
 
   const bannerHeightRatio = useMemo(
     () => (width < 768 ? HEIGHT_RATIO : HEIGHT_RATIO * 2),

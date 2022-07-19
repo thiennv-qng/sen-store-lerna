@@ -1,14 +1,15 @@
 import { useMemo } from 'react'
+import {
+  RootState,
+  useGoToStoreCallback,
+  useRootSelector,
+} from '@sentre/senhub'
 
 import { Card, Col, Row, Typography } from 'antd'
 import AppIcon from 'components/appIcon'
 
-import { useGoToStoreCallback } from 'hooks/useGotoStore'
-import { useSelector } from 'react-redux'
-import { AppState } from 'model'
-
 const AllApps = () => {
-  const register = useSelector((state: AppState) => state.page.register)
+  const register = useRootSelector((state: RootState) => state.page.register)
   const appIds = useMemo(() => Object.keys(register), [register])
   const onGoToStore = useGoToStoreCallback()
 

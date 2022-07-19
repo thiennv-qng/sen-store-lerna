@@ -8,6 +8,7 @@ import AppCategorySeeAll from './appCategory/seeAll'
 import AppCategorySlice from './appCategory/slice'
 import AllApps from './allApps'
 
+import { loadPage, loadRegister } from '@sentre/senhub/dist/store/page.reducer'
 import { compareAliasString } from './appCategory/hooks/custom'
 import { AppState } from 'model'
 import { useSelector } from 'react-redux'

@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import { devTools, bigintSerializationMiddleware } from 'model/devTools'
 
 import main from 'model/main.controller'
-import page from 'model/page.controller'
 import ui from 'model/ui.controller'
 
 /**
@@ -14,7 +13,6 @@ const model = configureStore({
   devTools: devTools(process.env.REACT_APP_ID as string),
   reducer: {
     main,
-    page,
     ui,
   },
 })

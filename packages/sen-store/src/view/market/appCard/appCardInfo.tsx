@@ -1,21 +1,22 @@
 import { MouseEvent, useCallback, useMemo } from 'react'
-import { useSelector } from 'react-redux'
 import { account } from '@senswap/sen-js'
-import { useWallet } from '@sentre/senhub'
+import {
+  RootState,
+  useGoToApp,
+  useInstallApp,
+  useRootSelector,
+  useWallet,
+} from '@sentre/senhub'
 
 import { Button, Card, Col, Row, Space, Typography } from 'antd'
 import AppIcon from 'components/appIcon'
 import Verification from 'components/verification'
 
-import { useGoToApp } from 'hooks/useGotoApp'
-import { useInstallApp } from 'hooks/useInstallApp'
-import { AppState } from 'model'
-
 export type AppCardInfoProps = { appId: string }
 
 const AppCardInfo = ({ appId }: AppCardInfoProps) => {
-  const register = useSelector((state: AppState) => state.page.register)
-  const appIds = useSelector((state: AppState) => state.page.appIds)
+  const register = useRootSelector((state: RootState) => state.page.register)
+  const appIds = useRootSelector((state: RootState) => state.page.appIds)
   const {
     wallet: { address: walletAddress },
   } = useWallet()
