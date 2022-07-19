@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { useWallet } from '@sentre/senhub'
+import { RootDispatch, useRootDispatch, useWallet } from '@sentre/senhub'
 import { account } from '@senswap/sen-js'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { Layout } from 'antd'
 
 import Market from './market'
-import AppViewer from 'view/market/appViewer'
+import AppInfos from 'view/appInfos'
 
+import { loadPage, loadRegister } from '@sentre/senhub/dist/store/page.reducer'
 import configs from 'configs'
-import { AppDispatch } from 'model'
-import { loadPage, loadRegister } from 'model/page.controller'
 
 import 'static/styles/dark.less'
 import 'static/styles/light.less'
@@ -21,7 +19,7 @@ const {
 } = configs
 
 const View = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useRootDispatch<RootDispatch>()
   const {
     wallet: { address: walletAddress },
   } = useWallet()
@@ -44,7 +42,7 @@ const View = () => {
       <Layout.Content>
         <Switch>
           <Route exact path={`/app/${appId}/`} component={Market} />
-          <Route exact path={`/app/${appId}/:appId`} component={AppViewer} />
+          <Route exact path={`/app/${appId}/:appId`} component={AppInfos} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

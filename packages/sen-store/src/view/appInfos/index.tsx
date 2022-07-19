@@ -5,10 +5,10 @@ import { Row, Col, Card, Button } from 'antd'
 import IonIcon from '@sentre/antd-ionicon'
 import AppDetails from './appDetails'
 import ScreenShot from './screenshot'
-import AppCategorySlice from '../appCategory/slice'
+import AppCategorySlice from '../market/appCategory/slice'
 
-import { CustomCategory } from '../appCategory/hooks'
-import './index.os.less'
+import { CustomCategory } from '../market/appCategory/hooks'
+import './index.less'
 
 const AppViewer = () => {
   const history = useHistory()
